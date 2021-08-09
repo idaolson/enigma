@@ -2,7 +2,6 @@ module Cipherable
   extend self
 
   def character_set
-    @character_set = ("a".."z") << " "
   end
 
   def calc_key(key)
@@ -17,13 +16,28 @@ module Cipherable
     end
   end
 
-  def shift(message, key, date)
+  def shift(key, date)
     key_array = calc_key(key)
     offset_array = calc_offset(date)
     (0..3).map do |num|
-      (key_array[num] + offset_array[num]) % 27
+      (key_array[num] + offset_array[num])
     end
   end
+
+  def letter_index(message, shifts)
+    message = message.downcase.split('')
+    letter_array = []
+    character_set = ('a'..'z').to_a << ' '
+    message.length.times do |i|
+      if character_set.index(message[i]).nil?
+        letter_array << message[i]
+      else letter_array << character_set[(character_set.index(message[i]) + shifts[i % 4]) % 27]
+      end
+    end
+    letter_array
+  end
+
+
 
   def unshift(code, key, date)
   end
