@@ -2,6 +2,7 @@ module Cipherable
   extend self
 
   def character_set
+    character_set = ('a'..'z').to_a << ' '
   end
 
   def calc_key(key)
@@ -24,22 +25,16 @@ module Cipherable
     end
   end
 
-  def letter_index(message, shifts)
+  def letter_index(message, shift_array)
     message = message.downcase.split('')
     letter_array = []
-    character_set = ('a'..'z').to_a << ' '
     message.length.times do |i|
       if character_set.index(message[i]).nil?
         letter_array << message[i]
-      else letter_array << character_set[(character_set.index(message[i]) + shifts[i % 4]) % 27]
+      else letter_array << character_set[(character_set.index(message[i]) + shift_array[i % 4]) % 27]
       end
     end
-    letter_array
-  end
-
-
-
-  def unshift(code, key, date)
+    letter_array.join
   end
 
   def today
