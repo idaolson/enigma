@@ -20,11 +20,11 @@ RSpec.describe Enigma do
 
   it "encrypts with today's date" do
     encrypted = enigma.encrypt("hello world", "02715")
-    expect(encrypted).to eq({ encryption: "", key: "02715", date: Date.today.strftime("%d%m%y") })
+    expect(encrypted).to eq({encryption: "nefau qdxly", key: "02715", date: Date.today.strftime("%d%m%y")})
   end
 
   it "decrypts with today's date" do
-    allow(Date).to receive(:today) { Date.new(2021, 08, 06) }
-    encrypted = enigma.decrypt("", "02715")
-    expect(encrypted).to eq({ decryption: "hello world", key: "02715", date: Date.today.strftime('%d%m%y') })
+    encrypted = enigma.decrypt("nefau qdxly", "02715")
+    expect(encrypted).to eq({decryption: "hello world", key: "02715", date: Date.today.strftime("%d%m%y")})
   end
+end
