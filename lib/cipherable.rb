@@ -39,10 +39,10 @@ module Cipherable
   end
 
   def today
-   Date.today.strftime('%d%m%y')
+    Date.today.strftime('%d%m%y')
   end
 
   def random_key
-   Random.rand(99999).to_s.rjust(5, '0')
+    Random.rand(99999).to_s.rjust(5, '0')
   end
 end
