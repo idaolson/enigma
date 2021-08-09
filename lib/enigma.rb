@@ -18,7 +18,7 @@ class Enigma
     end
 
     decrypt_hash = {
-      decryption: letter_index(ciphertext, neg_shift(key, date)),
+      decryption: letter_index(ciphertext, neg_shift),
       key: key,
       date: date
     }
