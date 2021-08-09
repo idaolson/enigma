@@ -11,9 +11,13 @@ class Enigma
     }
   end
 
-  def decrypt(code, key = nil, date = today)
-    encrypt_hash = {
-      encryption: letter_index(code, shift(key, date)),
+  def decrypt(message, key = nil, date = today)
+    neg_shift = shift(key, date).map do |num|
+      num * -1
+    end
+
+    decrypt_hash = {
+      decryption: letter_index(message, neg_shift),
       key: key,
       date: date
     }
