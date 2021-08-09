@@ -15,11 +15,16 @@ RSpec.describe Cipherable do
     end
 
     it "can create an array of shifts" do
-      expect(enigma.shift("hello world", "02715", "040895")).to eq([3, 0, 19, 20])
+      expect(enigma.shift("02715", "040895")).to eq([3, 27, 73, 20])
     end
 
     it "can generate today's date" do
       expect(enigma.today).to eq("090821")
+    end
+
+    it "can shift letters using cipher and skip spaces" do
+      result = ["k", "e", "d", "e", "r", " ", "o", "h", "u", "l", "w"]
+      expect(enigma.letter_index("hello world", [3, 27, 73, 20])).to eq(result)
     end
   end
 end
