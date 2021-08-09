@@ -11,7 +11,7 @@ class Enigma
     }
   end
 
-  def decrypt(message, key = nil, date = today)
+  def decrypt(message, key, date = today)
     neg_shift = shift(key, date).map do |num|
       num * -1
     end
