@@ -23,7 +23,7 @@ RSpec.describe Cipherable do
     end
 
     it "can generate today's date" do
-      expect(enigma.today).to eq("090821")
+      expect(enigma.today).to eq(Date.today.strftime("%d%m%y"))
     end
 
     it "can generate a random number string of 5 digits with 0s padding" do
